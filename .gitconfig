@@ -1,0 +1,8 @@
+[user]
+    name = linus345
+    email = linusekman01@gmail.com
+[merge]
+    tool = vimdiff
+    conflictstyle = diff3
+[mergetool]
+    prompt = false

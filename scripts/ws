@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Script to setup tmux workspace
+
+tmux split-window -v -p 25
+clear
+tmux split-window -h -p 50
+clear
