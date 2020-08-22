@@ -1,0 +1,3 @@
+[submodule ".vim/pack/colorschemes/opt/vim-gruvbox8"]
+	path = .vim/pack/colorschemes/opt/vim-gruvbox8
+	url = https://github.com/lifepillar/vim-gruvbox8.git
