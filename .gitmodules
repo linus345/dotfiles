@@ -1,0 +1,15 @@
+[submodule "vim/dot-vim/pack/plugins/start/ale"]
+	path = vim/dot-vim/pack/plugins/start/ale
+	url = https://github.com/dense-analysis/ale.git
+[submodule "vim/dot-vim/pack/plugins/start/quick-scope"]
+	path = vim/dot-vim/pack/plugins/start/quick-scope
+	url = https://github.com/unblevable/quick-scope.git
+[submodule "vim/dot-vim/pack/plugins/start/vim-commentary"]
+	path = vim/dot-vim/pack/plugins/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim/dot-vim/pack/plugins/start/vim-gitgutter"]
+	path = vim/dot-vim/pack/plugins/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "vim/dot-vim/pack/plugins/start/vim-gutentags"]
+	path = vim/dot-vim/pack/plugins/start/vim-gutentags
+	url = https://github.com/ludovicchabant/vim-gutentags.git
