@@ -6,3 +6,6 @@
     conflictstyle = diff3
 [mergetool]
     prompt = false
+[core]
+    excludesFile = ~/.gitignore
+	editor = vim

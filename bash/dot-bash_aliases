@@ -1,0 +1,17 @@
+# enable color as default for ls and grep
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias lsd='ls -d .*'
+
+alias python='python3' # alias python to run python3
+alias nts='cd ~/notes && ls' # to easily access notes from any directory
+alias gs='git status -s' # shortcut for git status
+alias gd='git diff'
+alias lip='ifconfig | grep "inet 192.168"' # get local ip

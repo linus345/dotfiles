@@ -6,6 +6,7 @@
 " ---
 "  Variables
 " ---
+let &t_ut='' " make it work with the kitty terminal, default: 'y'
 let mapleader = ','
 " ALE
 let g:ale_set_highlights = 1
@@ -39,6 +40,7 @@ filetype plugin indent on
 
 set background=dark
 set showcmd
+set ruler
 set relativenumber
 set numberwidth=1
 set autoread
@@ -60,7 +62,6 @@ set showmatch
 set matchtime=1
 set colorcolumn=80
 set formatoptions+=j
-set textwidth=0
 set linebreak
 set breakindent
 set showbreak=>
@@ -73,9 +74,9 @@ set shiftwidth=4
 set tabstop=4
 set switchbuf=useopen,split
 set ttimeout ttimeoutlen=50
-set laststatus=2
+set laststatus=1
 set statusline=\ %t\ %(\|\ %R\ %)%(\|\ %M\ %)%(\|\ %{GitStatus()}\ %)%(\|\ %{gutentags#statusline()}\ %)
-set statusline+=%=%{&filetype}\ \|%8.(\ %l:%c%)\ (%LL)
+set statusline+=%=%{&filetype}\ \|\ w:\ %{winnr()}\ \|\ %8.(\ %l:%c%)\ %(\|\ %L\ %)
 
 " ---
 "  Maps
@@ -97,6 +98,8 @@ noremap ^ 0
 nnoremap <leader>w :w<cr>
 " Make Y behave consistently with other operators
 nnoremap Y y$
+" 'View mode', unset relative numbers to make it easier to show lines
+nnoremap <leader>vm :set number! norelativenumber!<cr>
 " Disable highlight when <leader><cr> is pressed
 nnoremap <silent> <leader><cr> :noh<cr>
 " jump to tag
@@ -117,10 +120,17 @@ nnoremap <leader>sn ]s
 nnoremap <leader>sp [s
 " show details of error/warning
 nnoremap <leader>ad :ALEDetail<cr>
+" fix code
+nnoremap <leader>af :ALEFix<cr>
 " go to next error/warning
 nnoremap <leader>an :ALENextWrap<cr>
 " go to previous error/warning
 nnoremap <leader>ap :ALEPreviousWrap<cr>
+
+" ---
+"  Insert Mode Maps
+" ---
+inoremap <expr> <c-s> InsertWord()
 
 " ---
 "  Augroups / Autocmds and Highlights
@@ -132,24 +142,30 @@ augroup bufevent
     " Remove trailing whitespace
     autocmd BufWritePre *.txt,*.js,*.jsx,*.ts,*.tsx,*.go,*.py,*.sh,*.rs %s/\s\+$//e
 augroup END
+
 augroup MyGutentagsStatusLineRefresher
     autocmd!
     autocmd User GutentagsUpdating redrawstatus
     autocmd User GutentagsUpdated redrawstatus
 augroup END
-augroup gruvbox
+
+augroup ron
     autocmd!
-    autocmd ColorScheme gruvbox8 call ChangeHighlights()
+    autocmd ColorScheme ron call ChangeHighlightsRon()
 augroup END
 
 " ---
 "  Functions
 " ---
-function ChangeHighlights()
+function ChangeHighlightsRon()
     highlight FoldColumn ctermbg=NONE
+    highlight SignColumn ctermbg=NONE
     " Change Quick Scope colors and add underline
-    highlight QuickScopePrimary ctermfg=155 cterm=underline
-    highlight QuickScopeSecondary ctermfg=81 cterm=underline
+    highlight QuickScopePrimary ctermfg=208 cterm=underline
+    highlight QuickScopeSecondary ctermfg=118 cterm=underline
+    highlight CursorLine term=NONE cterm=NONE ctermbg=234
+    highlight CursorLineNr term=NONE cterm=NONE ctermbg=234
+    highlight ColorColumn ctermbg=234 ctermfg=NONE
 endfunction
 
 " function to get count of added, modified and removed lines for git, used for statusline
@@ -168,4 +184,21 @@ function GTags()
     return generating
 endfunction
 
-colorscheme gruvbox8
+func! InsertWord()
+    " get previous line number
+    let prevline = line('.')-1
+    " get the line from current position to the end
+    let rest_of_line = strcharpart(getline(prevline), virtcol('.')-1)
+    " if cursor was on a space, return 1 <C-y>
+    if rest_of_line[0] == ' '
+        let cnt = 1
+    else
+        " otherwise count number of chars till the space and return that number of <C-y>s
+        let end_of_word = substitute(rest_of_line, '^\(\S\+\).*', '\1', '')
+        let cnt = strchars(end_of_word)
+    endif
+
+    return repeat("\<C-y>", cnt)
+endfunc
+
+colorscheme ron

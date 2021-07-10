@@ -2,9 +2,15 @@ env:
   TERM: alacritty
 
 window:
+  dimensions:
+    columns: 80
+    lines: 24
   decorations: full
   startup_mode: Windowed
   title: Alacritty
+  padding:
+    x: 0
+    y: 0
 
 scrolling:
   history: 10000
@@ -14,24 +20,17 @@ font:
     family: Jetbrains Mono
     style: Regular
 
-  size: 13.0
+  size: 11.0
 
   offset:
     x: 0
     y: 1
 
-  # Thin stroke font rendering (macOS only) suitable for retina-displays
-  use_thin_strokes: true
-
-# If `true`, bold text is drawn using the bright color variants.
-#draw_bold_text_with_bright_colors: false
-
-# Colors default: Tomorrow Night Bright
 colors:
   # Default colors
-  #primary:
-    #background: '#000000'
-    #foreground: '#eaeaea'
+  # primary:
+  #   background: '#000000'
+  #   foreground: '#eaeaea'
 
     # Bright and dim foreground colors
     #
@@ -67,15 +66,15 @@ colors:
   #  background: '#404040'
 
   # Normal colors
-  #normal:
-  #  black:   '#000000'
-  #  red:     '#d54e53'
-  #  green:   '#b9ca4a'
-  #  yellow:  '#e6c547'
-  #  blue:    '#7aa6da'
-  #  magenta: '#c397d8'
-  #  cyan:    '#70c0ba'
-  #  white:   '#eaeaea'
+  # normal:
+  #   black:   '#000000'
+  #   red:     '#d54e53'
+  #   green:   '#b9ca4a'
+  #   yellow:  '#e6c547'
+  #   blue:    '#7aa6da'
+  #   magenta: '#c397d8'
+  #   cyan:    '#70c0ba'
+  #   white:   '#eaeaea'
 
   # Bright colors
   #bright:
@@ -131,12 +130,7 @@ mouse:
 
   url:
     launcher:
-      program: open
+      program: xdg-open
       args: []
 
-    modifiers: Command
-
-key_bindings:
-  # (macOS only)
-  - { key: F, mods: Command,  action: ToggleSimpleFullscreen }
-  - { key: N, mods: Command,  action: SpawnNewInstance }
+    modifiers: Control
