@@ -28,8 +28,8 @@ let g:gutentags_ctags_exclude = [
       \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
       \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
       \ ]
-" Gruvbox8
-let g:gruvbox_italicize_strings = 0
+" Ayu
+let ayucolor="mirage"
 
 " ---
 "  Options
@@ -38,9 +38,11 @@ syntax enable
 
 filetype plugin indent on
 
+set termguicolors
 set background=dark
 set showcmd
 set ruler
+set list
 set relativenumber
 set numberwidth=1
 set autoread
@@ -71,12 +73,18 @@ set smartindent
 set expandtab
 set smarttab
 set shiftwidth=4
+set cinoptions+=:0
+set cinoptions+=(0
+set cinoptions+=ks
 set tabstop=4
 set switchbuf=useopen,split
 set ttimeout ttimeoutlen=50
 set laststatus=1
 set statusline=\ %t\ %(\|\ %R\ %)%(\|\ %M\ %)%(\|\ %{GitStatus()}\ %)%(\|\ %{gutentags#statusline()}\ %)
 set statusline+=%=%{&filetype}\ \|\ w:\ %{winnr()}\ \|\ %8.(\ %l:%c%)\ %(\|\ %L\ %)
+set completeopt+=menuone
+set undofile
+set undodir=~/.vim/undodir
 
 " ---
 "  Maps
@@ -126,6 +134,10 @@ nnoremap <leader>af :ALEFix<cr>
 nnoremap <leader>an :ALENextWrap<cr>
 " go to previous error/warning
 nnoremap <leader>ap :ALEPreviousWrap<cr>
+" go to next tab
+nnoremap <leader>tn :tabnext<cr>
+" go to previous tab
+nnoremap <leader>tp :tabprevious<cr>
 
 " ---
 "  Insert Mode Maps
@@ -157,6 +169,7 @@ augroup END
 " ---
 "  Functions
 " ---
+" change colors for the 'ron' colorscheme
 function ChangeHighlightsRon()
     highlight FoldColumn ctermbg=NONE
     highlight SignColumn ctermbg=NONE
@@ -201,4 +214,5 @@ func! InsertWord()
     return repeat("\<C-y>", cnt)
 endfunc
 
-colorscheme ron
+" colorscheme ron
+colorscheme ayu

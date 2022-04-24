@@ -13,3 +13,6 @@
 [submodule "vim/dot-vim/pack/plugins/start/vim-gutentags"]
 	path = vim/dot-vim/pack/plugins/start/vim-gutentags
 	url = https://github.com/ludovicchabant/vim-gutentags.git
+[submodule "vim/dot-vim/pack/plugins/start/vim-glsl"]
+	path = vim/dot-vim/pack/plugins/start/vim-glsl
+	url = https://github.com/tikhomirov/vim-glsl.git
