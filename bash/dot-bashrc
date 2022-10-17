@@ -86,3 +86,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+export GOPATH=/home/linus/go
+export PATH=$PATH:/home/linus/go/bin

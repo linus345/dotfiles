@@ -8,8 +8,18 @@
 " ---
 let &t_ut='' " make it work with the kitty terminal, default: 'y'
 let mapleader = ','
+
 " ALE
-let g:ale_set_highlights = 1
+if !has('nvim')
+    let g:ale_set_highlights = 1
+    let g:ale_completion_enabled = 1
+    let g:ale_cpp_ccls_init_options = {
+    \   'cache': {
+    \       'directory': '/tmp/ccls/cache'
+    \   }
+    \ }
+endif
+
 " Gutentags
 let g:gutentags_add_default_project_roots = 0
 let g:gutentags_project_root = ['Cargo.toml', 'package.json', '.git']
@@ -28,8 +38,11 @@ let g:gutentags_ctags_exclude = [
       \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
       \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
       \ ]
+
+set termguicolors
+
 " Ayu
-let ayucolor="mirage"
+let ayucolor="light"
 
 " ---
 "  Options
@@ -38,7 +51,6 @@ syntax enable
 
 filetype plugin indent on
 
-set termguicolors
 set background=dark
 set showcmd
 set ruler
@@ -84,7 +96,13 @@ set statusline=\ %t\ %(\|\ %R\ %)%(\|\ %M\ %)%(\|\ %{GitStatus()}\ %)%(\|\ %{gut
 set statusline+=%=%{&filetype}\ \|\ w:\ %{winnr()}\ \|\ %8.(\ %l:%c%)\ %(\|\ %L\ %)
 set completeopt+=menuone
 set undofile
-set undodir=~/.vim/undodir
+
+if has('nvim')
+    set undodir=~/.config/nvim/undodir
+    set mouse=nvi
+else
+    set undodir=~/.vim/undodir
+endif
 
 " ---
 "  Maps
@@ -120,24 +138,22 @@ nnoremap <leader>vt :vert stag <c-r><c-w><cr>
 nnoremap <leader>pt :ptag <c-r><c-w><cr>
 " Toggle paste mode on and off
 nnoremap <leader>pp :setlocal paste!<cr>
-" Pressing ,ss will toggle and untoggle spell checking
+" Pressing ,ss will toggle spell checking
 nnoremap <leader>ss :setlocal spell!<cr>
 " go to next spelling error
 nnoremap <leader>sn ]s
 " go to previous spelling error
 nnoremap <leader>sp [s
-" show details of error/warning
-nnoremap <leader>ad :ALEDetail<cr>
-" fix code
-nnoremap <leader>af :ALEFix<cr>
-" go to next error/warning
-nnoremap <leader>an :ALENextWrap<cr>
-" go to previous error/warning
-nnoremap <leader>ap :ALEPreviousWrap<cr>
-" go to next tab
-nnoremap <leader>tn :tabnext<cr>
-" go to previous tab
-nnoremap <leader>tp :tabprevious<cr>
+if !has('nvim')
+    " show details of error/warning
+    nnoremap <leader>ad :ALEDetail<cr>
+    " fix code
+    nnoremap <leader>af :ALEFix<cr>
+    " go to next error/warning
+    nnoremap <leader>an :ALENextWrap<cr>
+    " go to previous error/warning
+    nnoremap <leader>ap :ALEPreviousWrap<cr>
+endif
 
 " ---
 "  Insert Mode Maps

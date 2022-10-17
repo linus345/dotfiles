@@ -16,3 +16,6 @@
 [submodule "vim/dot-vim/pack/plugins/start/vim-glsl"]
 	path = vim/dot-vim/pack/plugins/start/vim-glsl
 	url = https://github.com/tikhomirov/vim-glsl.git
+[submodule "nvim/.config/nvim/pack/packer/opt/clangd_extensions.nvim"]
+	path = nvim/.config/nvim/pack/packer/opt/clangd_extensions.nvim
+	url = https://git.sr.ht/~p00f/clangd_extensions.nvim

@@ -1,0 +1,20 @@
+CompileFlags:                     # Tweak the parse settings
+  Add: [-xc++, -Wall]             # treat all files as C++, enable more warnings
+  Compiler: clang++               # Change argv[0] of compile flags to `clang++`
+
+Index:
+  Background: Build
+
+# look into https://clang.llvm.org/extra/clang-tidy/checks/list.html
+
+InlayHints:
+    Enabled: Yes
+    ParameterNames: Yes
+    DeducedTypes: Yes
+
+Hover:
+  ShowAKA: Yes
+
+Diagnostics:
+  UnusedIncludes: Strict
+

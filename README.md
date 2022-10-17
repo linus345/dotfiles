@@ -2,35 +2,22 @@
 
 Dotfiles, short scripts and a list of useful tools
 
-## Config files for
-* Alacritty
-* Vim
-* Tmux
-* Zsh
-* Git
+Use GNU Stow to install the packages into their correct location with:
 
-## Apps / Tools
-* Alacritty
-* Ngrok
-* Insomnia
-* Vim
-* Tmux
-* Node
-* Mongodb
-* Postgresql
-* Git
-* Nmap
-* Wget
-* Universal-ctags
-* Python3
-* Amass
-* Go
-* Gron
-* waybackurls
-* urinteresting
-* subfinder
-* httprobe
-* gobuster
-* gitrob
-* ffuf
-* assetfinder
+```
+stow --dotfiles -t ~ package...
+```
+where `package` is one or more of the below packages
+
+This command assumes that the current directory is the root of this repository.
+
+## Packages
+
+* Alacritty `alacritty`
+* Kitty `kitty`
+* Vim `vim`
+* NeoVim `nvim`
+* Tmux `tmux`
+* Bash `bash`
+* Zsh `zsh`
+* Git `git`

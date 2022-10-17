@@ -12,6 +12,11 @@ alias lsd='ls -d .*'
 
 alias python='python3' # alias python to run python3
 alias nts='cd ~/notes && ls' # to easily access notes from any directory
-alias gs='git status -s' # shortcut for git status
-alias gd='git diff'
 alias lip='ifconfig | grep "inet 192.168"' # get local ip
+
+# git aliases
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit'
+alias gd='git diff'
+alias gs='git status'
